@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add Animate.css to your HTML head -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <title>Cezen Software Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #0d0d3d;
+    }
+
+    /* Hero Section Background Animation */
+    .hero-bg {
+      background: radial-gradient(circle at center, #0a0a5a, #1a1a8a, #0d0d3d);
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated Floating Elements */
+    .floating-shape {
+      position: absolute;
+      animation: float 10s ease-in-out infinite, rotate 15s linear infinite;
+      filter: blur(5px);
+    }
+
+    .shape-1 {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+      border-radius: 50%;
+    }
+
+    .shape-2 {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      bottom: 25%;
+      right: 15%;
+      animation-delay: 2s;
+      border-radius: 10%;
+    }
+
+    .shape-3 {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      top: 50%;
+      left: 75%;
+      animation-delay: 4s;
+      border-radius: 0;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Hero Text */
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      padding: 0 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: linear-gradient(to right, #ff4e50, #f9d423);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite, zoomIn 2s ease-in-out;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeInText 3s ease-in-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 100%;
+      }
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 3D Rotating Cube */
+    .cube-container {
+      position: absolute;
+      bottom: 10%;
+      right: 10%;
+      perspective: 1000px;
+    }
+
+    .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spinCube 5s infinite linear;
+    }
+
+    .cube div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      opacity: 0.9;
+      border: 2px solid white;
+    }
+
+    .cube .front { transform: rotateY(0deg) translateZ(50px); }
+    .cube .back { transform: rotateY(180deg) translateZ(50px); }
+    .cube .right { transform: rotateY(90deg) translateZ(50px); }
+    .cube .left { transform: rotateY(-90deg) translateZ(50px); }
+    .cube .top { transform: rotateX(90deg) translateZ(50px); }
+    .cube .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+    @keyframes spinCube {
+      0% {
+        transform: rotateX(0) rotateY(0);
+      }
+      100% {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
+
+    /* Media Queries for Mobile Optimization */
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .hero-text p {
+        font-size: 1.2rem;
+      }
+      .cube-container {
+        bottom: 5%;
+        right: 5%;
+      }
+    }
+  </style>
+<body>
+<header class="flex items-center justify-between px-4 py-3 bg-gray-100 shadow-md">
+  <!-- Logo Section -->
+  <div class="flex items-center">
+    <img src="https://i.imgur.com/ysdpQPY.png" alt="Logo" class="h-12 w-12 rounded-full object-cover">
+  </div>
+
+
+  <!-- Navigation Section -->
+  <nav class="flex space-x-6">
+    <a href="#home" class="text-gray-700 font-medium hover:text-blue-600">Home</a>
+    <a href="#about" class="text-gray-700 font-medium hover:text-blue-600">About</a>
+    <a href="#contact" class="text-gray-700 font-medium hover:text-blue-600">Contact</a>
+  </nav>
+</header>
+
+  <div class="hero-bg">
+    <!-- Floating Background Elements -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Hero Text -->
+    <div class="hero-text">
+      <h1>Cezen Software Solutions</h1>
+      <p>Digitalizing Small Businesses with Innovation</p>
+    </div>
+
+    <!-- 3D Rotating Cube -->
+    <div class="cube-container">
+      <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-[#0a1f3d]" id="services">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold text-white mb-12" data-aos="fade-up">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300" data-aos="zoom-in">
+          <img class="w-full h-48 object-cover mb-4 rounded" src="https://storage.googleapis.com/a1aa/image/xJK2uBvhG0KeQafisE0NAyGozT6fqh5n16rfQSiJIQIKCNJPB.jpg" alt="NFC Cards" />
+          <h3 class="text-2xl font-bold mb-2 text-white">NFC Cards</h3>
+          <p class="text-gray-300">Modern NFC cards to streamline your business operations.</p>
+        </div>
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300" data-aos="zoom-in" data-aos-delay="100">
+          <img class="w-full h-48 object-cover mb-4 rounded" src="https://storage.googleapis.com/a1aa/image/w2ESo5Kuvc4HCd02MM3ob41rUfisa0cvH1db3OWaY20SoJ5JA.jpg" alt="Website Development" />
+          <h3 class="text-2xl font-bold mb-2 text-white">Website Development</h3>
+          <p class="text-gray-300">Professional websites to enhance your online presence.</p>
+        </div>
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300" data-aos="zoom-in" data-aos-delay="200">
+          <img class="w-full h-48 object-cover mb-4 rounded" src="https://storage.googleapis.com/a1aa/image/zEZy8SrY0f2iGyBpeeADhCzeu70Go18FeVjjP1GZPl2PEaSeE.jpg" alt="360° Virtual Tours" />
+          <h3 class="text-2xl font-bold mb-2 text-white">360° Virtual Tours</h3>
+          <p class="text-gray-300">Immersive virtual tours to showcase your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About Us Section -->
+
+  <section class="bg-[#0a1f3d] py-20 section-appear" id="about">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-bold mb-12 text-white animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up">
+        About Us
+      </h2>
+      
+      <!-- Interactive About Us Content -->
+      <div class="flex flex-col md:flex-row items-stretch bg-[#12325d] rounded-xl overflow-hidden shadow-2xl" data-aos="zoom-in">
+        <!-- Interactive Image Side -->
+        <div class="md:w-1/2 relative overflow-hidden">
+          <div class="image-container h-full">
+            <img alt="Team of professionals working together" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" src="https://storage.googleapis.com/a1aa/image/HfJbGqdqKITe7UHau8xVon9L13PaSGHz1MeDuU9MheKMCNJPB.jpg"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-transparent opacity-30"></div>
+          </div>
+          
+          <!-- Interactive Hotspots -->
+          <div class="absolute top-1/4 left-1/4 hotspot" data-tooltip="Professional Team">
+            <div class="hotspot-dot"></div>
+            <div class="hotspot-pulse"></div>
+          </div>
+          
+          <div class="absolute bottom-1/3 right-1/3 hotspot" data-tooltip="Creative Process">
+            <div class="hotspot-dot"></div>
+            <div class="hotspot-pulse"></div>
+          </div>
+          
+          <div class="absolute top-1/2 right-1/4 hotspot" data-tooltip="Innovative Solutions">
+            <div class="hotspot-dot"></div>
+            <div class="hotspot-pulse"></div>
+          </div>
+        </div>
+        
+        <!-- Content Side with Interactive Elements -->
+        <div class="md:w-1/2 p-8 md:p-12 text-left flex flex-col justify-between">
+          <div>
+            <h3 class="text-3xl font-bold mb-6 text-white typing-effect">Cezen Software Solutions</h3>
+            
+            <div class="about-text-container relative overflow-hidden">
+              <p class="text-lg mb-6 text-white slide-up-text">
+                Dedicated to helping small-scale businesses digitalize their operations. Our team of experts specializes in creating NFC cards, professional websites, and 360-degree virtual tours to give your business a competitive edge.
+              </p>
+              
+              <p class="text-lg mb-8 text-white slide-up-text delay-300">
+                We believe in innovation, creativity, and providing top-notch services to our clients. Our mission is to empower businesses to thrive in the digital age.
+              </p>
+            </div>
+            
+            <!-- Animated Service Icons -->
+            <div class="grid grid-cols-3 gap-4 mb-8">
+              <div class="service-icon-container p-3 bg-[#0a1f3d] rounded-lg text-center hover-bounce">
+                <i class="fas fa-id-card text-3xl text-blue-400 mb-2"></i>
+                <p class="text-white text-sm">NFC Cards</p>
+              </div>
+              
+              <div class="service-icon-container p-3 bg-[#0a1f3d] rounded-lg text-center hover-bounce">
+                <i class="fas fa-laptop-code text-3xl text-green-400 mb-2"></i>
+                <p class="text-white text-sm">Web Design</p>
+              </div>
+              
+              <div class="service-icon-container p-3 bg-[#0a1f3d] rounded-lg text-center hover-bounce">
+                <i class="fas fa-vr-cardboard text-3xl text-purple-400 mb-2"></i>
+                <p class="text-white text-sm">Virtual Tours</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Expertise Progress Bars -->
+          <div class="mt-auto">
+            <div class="mb-4">
+              <div class="flex justify-between mb-1">
+                <span class="text-white">NFC Card Solutions</span>
+                <span class="text-white">98%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-blue-600 h-2.5 rounded-full progress-animate" style="width: 0%"></div>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <div class="flex justify-between mb-1">
+                <span class="text-white">Website Development</span>
+                <span class="text-white">95%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-green-500 h-2.5 rounded-full progress-animate" style="width: 0%"></div>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <div class="flex justify-between mb-1">
+                <span class="text-white">360° Virtual Tours</span>
+                <span class="text-white">97%</span>
+              </div>
+              <div class="w-full bg-gray-700 rounded-full h-2.5">
+                <div class="bg-purple-500 h-2.5 rounded-full progress-animate" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Animated Counters Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
+        <div class="counter-box bg-[#12325d] p-6 rounded-lg transform transition-all duration-500 hover:rotate-y-180">
+          <div class="counter-front flex flex-col items-center">
+            <i class="fas fa-users text-4xl text-blue-400 mb-3"></i>
+            <h4 class="counter-number text-3xl font-bold text-white mb-2" data-target="120">0</h4>
+            <p class="text-white">Happy Clients</p>
+          </div>
+          <div class="counter-back">
+            <p class="text-white">Trusted by over 120 businesses across industries</p>
+          </div>
+        </div>
+        
+        <div class="counter-box bg-[#12325d] p-6 rounded-lg transform transition-all duration-500 hover:rotate-y-180">
+          <div class="counter-front flex flex-col items-center">
+            <i class="fas fa-project-diagram text-4xl text-green-400 mb-3"></i>
+            <h4 class="counter-number text-3xl font-bold text-white mb-2" data-target="350">0</h4>
+            <p class="text-white">Projects Completed</p>
+          </div>
+          <div class="counter-back">
+            <p class="text-white">Successfully delivered over 350 projects on time and on budget</p>
+          </div>
+        </div>
+        
+        <div class="counter-box bg-[#12325d] p-6 rounded-lg transform transition-all duration-500 hover:rotate-y-180">
+          <div class="counter-front flex flex-col items-center">
+            <i class="fas fa-clock text-4xl text-yellow-400 mb-3"></i>
+            <h4 class="counter-number text-3xl font-bold text-white mb-2" data-target="3">0</h4>
+            <p class="text-white">Years Experience</p>
+          </div>
+          <div class="counter-back">
+            <p class="text-white">3 years of innovation and excellence in digital solutions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Image Container */
+    .image-container {
+      position: relative;
+      min-height: 400px;
+    }
+    
+    /* Typing Effect */
+    .typing-effect {
+      overflow: hidden;
+      border-right: .15em solid #3498db;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .10em;
+      animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #3498db; }
+    }
+    
+    /* Text Animation */
+    .slide-up-text {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s ease forwards;
+    }
+    
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+    
+    @keyframes slideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Hotspots */
+    .hotspot {
+      position: relative;
+      z-index: 10;
+      cursor: pointer;
+    }
+    
+    .hotspot-dot {
+      width: 16px;
+      height: 16px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hotspot-pulse {
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      z-index: 1;
+      animation: pulse 2s infinite;
+    }
+    
+    .hotspot::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 20;
+    }
+    
+    .hotspot:hover::after {
+      opacity: 1;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+      }
+      70% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+    
+    /* Service Icons */
+    .service-icon-container {
+      transition: all 0.3s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    .hover-bounce:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .service-icon-container i {
+      transition: all 0.3s ease;
+    }
+    
+    .service-icon-container:hover i {
+      transform: scale(1.2);
+    }
+    
+    /* Progress Bar Animation */
+    .progress-animate {
+      transition: width 1.5s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .progress-animate::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* 3D Flip Counter Boxes */
+    .counter-box {
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      height: 180px;
+    }
+    
+    .counter-front, .counter-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .counter-back {
+      transform: rotateY(180deg);
+      padding: 1.5rem;
+    }
+    
+    .hover\:rotate-y-180:hover {
+      transform: rotateY(180deg);
+    }
+  </style>
+  
+  <script>
+    // Initialize AOS
+    document.addEventListener("DOMContentLoaded", function() {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+      
+      // Animate progress bars when in viewport
+      const progressBars = document.querySelectorAll('.progress-animate');
+      const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const parentElement = entry.target.parentElement.previousElementSibling;
+            const percentage = parentElement.lastElementChild.textContent.replace('%', '');
+            entry.target.style.width = percentage + '%';
+            progressObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      progressBars.forEach(bar => {
+        progressObserver.observe(bar);
+      });
+      
+      // Counter Animation
+      const counterNumbers = document.querySelectorAll('.counter-number');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            const duration = 2000; // ms
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const timer = setInterval(() => {
+              current += increment;
+              entry.target.textContent = Math.floor(current);
+              
+              if (current >= target) {
+                entry.target.textContent = target;
+                clearInterval(timer);
+              }
+            }, 16);
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counterNumbers.forEach(number => {
+        observer.observe(number);
+      });
+    });
+  </script>
+
+  <!-- Why Choose Us Section -->
+<section class="bg-[#091b3d] py-20 section-appear" id="why-choose-us">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-12 text-white animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up">
+      Why Choose Us
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Expertise Card with unique animation -->
+      <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up" data-aos-delay="400">
+        <i class="fas fa-award text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="text-2xl font-bold mb-2 text-white">Expertise</h3>
+        <ul class="text-white text-left space-y-3">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Years of industry experience.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Proven track record in delivering results.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Expertise across various domains.
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Innovation Card with unique animation -->
+      <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 animate__animated animate__fadeInUp animate__delay-2s" data-aos="fade-up" data-aos-delay="500">
+        <i class="fas fa-lightbulb text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="text-2xl font-bold mb-2 text-white">Innovation</h3>
+        <ul class="text-white text-left space-y-3">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Cutting-edge technology integration.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Solutions tailored to the latest trends.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Continuously evolving processes for growth.
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Customer Focus Card with unique animation -->
+      <div class="bg-[#12325d] p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 animate__animated animate__fadeInUp animate__delay-3s" data-aos="fade-up" data-aos-delay="600">
+        <i class="fas fa-users text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="text-2xl font-bold mb-2 text-white">Customer Focus</h3>
+        <ul class="text-white text-left space-y-3">
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Personalized service for every client.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> Quick response time and support.
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check-circle text-yellow-400 mr-2"></i> High customer satisfaction rates.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Initialize AOS (for scroll-based animations) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1200, 
+    easing: 'ease-out-quint', 
+    once: false, 
+    offset: 100, 
+  });
+</script>
+
+
+<style>
+  /* Bullet points with check-circle icon */
+  .fa-check-circle {
+    font-size: 1.5rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Hover effect for icons */
+  .fa-check-circle:hover {
+    color: #ffcc00; /* Change icon color on hover */
+  }
+
+  /* Animations for the cards */
+  .animate__fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  /* Unique entrance animation for cards */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    50% {
+      opacity: 0.5;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hover effect to make cards "float" with depth */
+  .bg-[#12325d]:hover {
+    transform: translateY(-8px) scale(1.05); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); 
+  }
+</style>
+
+
+
+<!-- Initialize AOS (for scroll-based animations) -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-out-quint', 
+    once: true, 
+  });
+</script>
+
+<!-- Optional: Add unique hover effects and card animations -->
+<style>
+  /* Bullet points with check-circle icon */
+  .fa-check-circle {
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  /* Hover effect for icons */
+  .fa-check-circle:hover {
+    color: #ffcc00; /* Change icon color on hover */
+  }
+
+  /* Animations for the cards */
+  .animate__fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Add hover effect to give a slight lift to the card */
+  .bg-[#12325d]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<!-- Pricing Section -->
+<section class="bg-[#0a1f3d] py-20 section-appear" id="pricing">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-bold mb-12 text-white animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up">
+        Pricing
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- NFC Cards Pricing -->
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-500 animate__animated animate__zoomIn animate__delay-2s pricing-card" data-aos="zoom-in" data-aos-delay="700">
+          <h3 class="text-2xl font-bold mb-2 text-white">NFC Cards</h3>
+          <p class="text-xl font-bold text-yellow-400 mb-4"></p>
+          <ul class="text-left mb-6 text-white h-32">
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Custom Design</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Contactless Technology</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Easy Integration</span>
+            </li>
+          </ul>
+          <a class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors duration-300" href="https://wa.me/9949241604?text=I'm%20interested%20in%20NFC%20Cards" target="_blank" rel="noopener">
+            Book a Quote
+          </a>
+        </div>
+  
+        <!-- Website Building Pricing -->
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-500 animate__animated animate__zoomIn animate__delay-3s pricing-card" data-aos="zoom-in" data-aos-delay="800">
+          <h3 class="text-2xl font-bold mb-2 text-white">Website Building</h3>
+          <p class="text-xl font-bold text-yellow-400 mb-4"></p>
+          <ul class="text-left mb-6 text-white h-32">
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Custom Design</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Responsive Layout</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>SEO Optimization</span>
+            </li>
+          </ul>
+          <a class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors duration-300" href="https://wa.me/9949241604?text=I%20want%20a%20website%20for%20my%20business" target="_blank" rel="noopener">
+            Book a Quote
+          </a>
+        </div>
+  
+        <!-- 360° Virtual Tour Pricing -->
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-500 animate__animated animate__zoomIn animate__delay-4s pricing-card" data-aos="zoom-in" data-aos-delay="900">
+          <h3 class="text-2xl font-bold mb-2 text-white">360° Virtual Tour</h3>
+          <p class="text-xl font-bold text-yellow-400 mb-4"></p>
+          <ul class="text-left mb-6 text-white h-32">
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>High-Quality Imagery</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Interactive Experience</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Easy Integration</span>
+            </li>
+          </ul>
+          <a class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors duration-300" href="https://wa.me/9949241604?text=I'm%20interested%20in%20360°%20Virtual%20Tour" target="_blank" rel="noopener">
+            Book a Quote
+          </a>
+        </div>
+  
+        <!-- 3D Virtual Tour Pricing -->
+        <div class="bg-[#12325d] p-6 rounded-lg shadow-2xl hover:shadow-3xl transition-all duration-500 animate__animated animate__zoomIn animate__delay-4s pricing-card" data-aos="zoom-in" data-aos-delay="900">
+          <h3 class="text-2xl font-bold mb-2 text-white">3D Virtual Tour</h3>
+          <p class="text-xl font-bold text-yellow-400 mb-4"></p>
+          <ul class="text-left mb-6 text-white h-32">
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Immersive 3D Experience</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Realistic Navigation</span>
+            </li>
+            <li class="mb-2 flex items-start">
+              <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
+              <span>Multi-Platform Support</span>
+            </li>
+          </ul>
+          <a class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors duration-300" href="https://wa.me/9949241604?text=I'm%20interested%20in%203D%20Virtual%20Tour" target="_blank" rel="noopener">
+            Book a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Styling for Glowing Effect -->
+  <style>
+    .pricing-card {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+      animation: glow 1.5s infinite alternate;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.8);
+    }
+  
+    .pricing-card h3,
+    .pricing-card p,
+    .pricing-card a {
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .pricing-card:hover h3 {
+      transform: scale(1.1);
+      color: #fff;
+    }
+  
+    .pricing-card:hover p {
+      color: #ffcc00;
+    }
+  
+    .pricing-card ul {
+      flex-grow: 1;
+    }
+  
+    /* Glowing effect */
+    @keyframes glow {
+      0% {
+        border-color: #0ff;
+      }
+      50% {
+        border-color: #ff0;
+      }
+      100% {
+        border-color: #ff1493;
+      }
+    }
+  </style>
+<!-- Initialize AOS -->
+<script>
+  AOS.init({
+    duration: 1000, 
+    easing: 'ease-in-out', 
+    once: false,
+  });
+</script>
+<footer style="background: linear-gradient(to right, #141e30, #243b55); color: white; text-align: center; padding: 20px; font-size: 16px; font-weight: 500; margin-top: 30px; box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); letter-spacing: 1px;">
+    © 2025 Proudly Crafted by <span style="color: #4facfe;">Cezen Software Solutions</span> 🚀
+</footer>
+
+</body> 
+</html>
